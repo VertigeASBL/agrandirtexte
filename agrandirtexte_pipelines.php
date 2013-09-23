@@ -18,6 +18,10 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
  * sur des pipelines existants.
  */
 
+function agrandirtexte_insert_head($flux) {
+    $flux .= '<script src="'.produire_fond_statique('js/agrandir.js').'" type="text/javascript"></script>';
 
+    return $flux;
+}
 
 ?>

@@ -37,7 +37,8 @@
 		* parents d'onglets... configuration, plugins, statistiques, ... 
 		<onglet nom="agrandirtexte" titre="agrandirtexte:agrandirtexte_titre" parent="configuration" icone="images/agrandirtexte-24.png" />
 	-->
-
+    
+    <pipeline nom="insert_head" inclure="agrandirtexte_pipelines.php" />
 
 
 </paquet>
