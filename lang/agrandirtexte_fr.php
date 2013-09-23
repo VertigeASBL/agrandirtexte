@@ -9,8 +9,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'agrandirtexte_titre' => 'Agrandir le texte',
 
 	// C
-	'cfg_exemple' => 'Exemple',
-	'cfg_exemple_explication' => 'Explication de cet exemple',
+	'selecteur' => 'Selecteur',
+	'aide_selecteur' => 'Entrer un sélécteur CSS valide.',
 	'cfg_titre_parametrages' => 'Paramétrages',
 
 	// T
