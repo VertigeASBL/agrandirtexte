@@ -24,4 +24,10 @@ function agrandirtexte_insert_head($flux) {
     return $flux;
 }
 
+function agrandirtexte_insert_head_css($flux) {
+
+
+    return $flux;
+}
+
 ?>
