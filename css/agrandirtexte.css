@@ -3,13 +3,16 @@
 }
 
 .agrandirtexte_moin {
-    
+    font-size: 80%;
+    cursor: pointer;
 }
 
 .agrandirtexte_reset {
-    
+    font-size: 100%;
+    cursor: pointer;
 }
 
 .agrandirtexte_plus {
-    
+    font-size: 120%;
+    cursor: pointer;
 }

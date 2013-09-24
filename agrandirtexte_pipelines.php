@@ -26,6 +26,7 @@ function agrandirtexte_insert_head($flux) {
 
 function agrandirtexte_insert_head_css($flux) {
 
+    $flux .= '<link href="'.find_in_path('css/agrandirtexte.css').'" type="text/css" rel="stylesheet" />';
 
     return $flux;
 }
