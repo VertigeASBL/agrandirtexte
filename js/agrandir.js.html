@@ -1,45 +1,72 @@
-jQuery(document).ready(function($) {
+(function($) {
+// What does the agrandirtexte plugin do?
+$.fn.agrandirtexte = function(options) {
 
-    var target = $("#CONFIG{agrandirtexte/selecteur}");
+  if (!this.length) { return this; }
 
-    // On récupère la taille de la cible en Int pour faire des opérations mathématique dessus.
-    var size = parseInt(target.css("font-size"));
+  var sparta = {
+    target: $(this),
+    size: parseInt($(this).css("font-size")),
+    save_size: parseInt($(this).css("font-size")),
+    lineHeight: $(this).css("line-height")
+  }
 
-    // On sauvegarde la taille originale, pour pouvoir y revenir via le reset.
-    var save_size = parseInt(target.css("font-size"));
+  opts = $.extend(true, sparta, $.fn.agrandirtexte.defaults, options);
 
-    // On récupère le line-height originale
-    var lineHeight = target.css("line-height");
+  console.log(opts);
 
-    // Si on click sur plus petit, on rédécrémente la taille.
-    $(".agrandirtexte_moin").on("click", function () {
-        size--;
-        target.css({
-            "font-size": size+"px",
-            "line-height": "normal"
-        });
+  this.each(function() {
+
+    // Evénement
+    $(".agrandirtexte_moins").on("click", function () {
+      opts.target.moins();
     });
 
     // Si c'est un reset, on revient à la taille originale.
     $(".agrandirtexte_reset").on("click", function () {
-        // On reset aussi la taille en cour d'utilisation.
-        size = save_size;
-
-        // On revient à save_size
-        target.css({
-            "font-size": save_size+"px",
-            "line-height": lineHeight
-        });
+      opts.target.reset();
     });
 
-    // Si on demander le texte plus grand, on incrémente la taille;
     $(".agrandirtexte_plus").on("click", function () {
-        size++;
-        target.find('p').css({
-            "font-size": size+"px",
-            "line-height": "normal"
-        });
-
-        console.log(size);
+      opts.target.plus();
     });
+  });
+
+  return this;
+};
+
+// default options
+$.fn.agrandirtexte.defaults = {};
+
+$.fn.moins = function () {
+  opts.size--;
+  opts.target.css({
+    "font-size": opts.size+"px",
+    "line-height": "normal"
+  });
+}
+
+$.fn.reset = function () {
+  // On reset aussi la taille en cour d'utilisation.
+  opts.size = opts.save_size;
+
+  // On revient à save_size
+  opts.target.css({
+    "font-size": opts.save_size+"px",
+    "line-height": opts.lineHeight
+  });
+}
+
+$.fn.plus = function () {
+  opts.size++;
+  opts.target.css({
+    "font-size": opts.size+"px",
+    "line-height": "normal"
+  });
+}
+
+})(jQuery);
+
+jQuery(document).ready(function($) {
+  $("#CONFIG{agrandirtexte/selecteur}").agrandirtexte();
 });
