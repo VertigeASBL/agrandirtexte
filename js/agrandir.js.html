@@ -5,10 +5,7 @@ $.fn.agrandirtexte = function(options) {
 
   // Because this is sparta
   var sparta = {
-    target: $(this),
-    size: parseInt($(this).css("font-size")),
-    save_size: parseInt($(this).css("font-size")),
-    lineHeight: $(this).css("line-height")
+    target: $(this)
   }
 
   // Fuuuusion
@@ -18,17 +15,23 @@ $.fn.agrandirtexte = function(options) {
 
     // Si on clic sur moins
     $(".agrandirtexte_moins").on("click", function () {
-      opts.target.moins();
+      opts.target.find(opts.elem).each(function () {
+        $(this).moins();
+      });
     });
 
     // Si c'est un reset, on revient à la taille originale.
     $(".agrandirtexte_reset").on("click", function () {
-      opts.target.reset();
+      opts.target.find(opts.elem).each(function () {
+        $(this).reset();
+      });
     });
 
     // Si on clic sur plus
     $(".agrandirtexte_plus").on("click", function () {
-      opts.target.plus();
+      opts.target.find(opts.elem).each(function () {
+        $(this).plus();
+      });
     });
   });
 
@@ -36,31 +39,29 @@ $.fn.agrandirtexte = function(options) {
 };
 
 // default options
-$.fn.agrandirtexte.defaults = {};
+$.fn.agrandirtexte.defaults = {
+  // Les éléments html qui seront recherché pour faire l'update de taille.
+  elem: "p, li, a, td, h1, h2, h3, h4, h5, h6",
+  step: 1
+};
 
 $.fn.moins = function () {
-  opts.size--;
-  opts.target.css({
-    "font-size": opts.size+"px",
+  size = parseInt($(this).css("font-size"));
+  $(this).css({
+    "font-size": (size-opts.step)+"px",
     "line-height": "normal"
   });
 }
 
 $.fn.reset = function () {
-  // On reset aussi la taille en cour d'utilisation.
-  opts.size = opts.save_size;
-
-  // On revient à save_size
-  opts.target.css({
-    "font-size": opts.save_size+"px",
-    "line-height": opts.lineHeight
-  });
+  // On supprime les style ajouté par le javascipt.
+  $(this).removeAttr('style');
 }
 
 $.fn.plus = function () {
-  opts.size++;
-  opts.target.css({
-    "font-size": opts.size+"px",
+  size = parseInt($(this).css("font-size"));
+  $(this).css({
+    "font-size": (size+opts.step)+"px",
     "line-height": "normal"
   });
 }
