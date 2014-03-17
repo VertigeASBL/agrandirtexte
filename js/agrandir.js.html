@@ -1,9 +1,9 @@
 (function($) {
-// What does the agrandirtexte plugin do?
 $.fn.agrandirtexte = function(options) {
 
   if (!this.length) { return this; }
 
+  // Because this is sparta
   var sparta = {
     target: $(this),
     size: parseInt($(this).css("font-size")),
@@ -11,13 +11,12 @@ $.fn.agrandirtexte = function(options) {
     lineHeight: $(this).css("line-height")
   }
 
+  // Fuuuusion
   opts = $.extend(true, sparta, $.fn.agrandirtexte.defaults, options);
-
-  console.log(opts);
 
   this.each(function() {
 
-    // Evénement
+    // Si on clic sur moins
     $(".agrandirtexte_moins").on("click", function () {
       opts.target.moins();
     });
@@ -27,6 +26,7 @@ $.fn.agrandirtexte = function(options) {
       opts.target.reset();
     });
 
+    // Si on clic sur plus
     $(".agrandirtexte_plus").on("click", function () {
       opts.target.plus();
     });
