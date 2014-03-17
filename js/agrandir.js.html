@@ -1,9 +1,9 @@
 jQuery(document).ready(function($) {
 
-    // On récupère la taille de la cible en Int pour faire des opérations mathématique dessus.
-    var size = parseInt($("#CONFIG{agrandirtexte/selecteur}").css("font-size"));
-
     var target = $("#CONFIG{agrandirtexte/selecteur}");
+
+    // On récupère la taille de la cible en Int pour faire des opérations mathématique dessus.
+    var size = parseInt(target.css("font-size"));
 
     // On sauvegarde la taille originale, pour pouvoir y revenir via le reset.
     var save_size = parseInt(target.css("font-size"));
