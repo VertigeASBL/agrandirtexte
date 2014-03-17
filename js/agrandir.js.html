@@ -1,18 +1,20 @@
 jQuery(document).ready(function($) {
-    
+
     // On récupère la taille de la cible en Int pour faire des opérations mathématique dessus.
     var size = parseInt($("#CONFIG{agrandirtexte/selecteur}").css("font-size"));
 
+    var target = $("#CONFIG{agrandirtexte/selecteur}");
+
     // On sauvegarde la taille originale, pour pouvoir y revenir via le reset.
-    var save_size = parseInt($("#CONFIG{agrandirtexte/selecteur}").css("font-size"));
+    var save_size = parseInt(target.css("font-size"));
 
     // On récupère le line-height originale
-    var lineHeight = $("#CONFIG{agrandirtexte/selecteur}").css("line-height");
+    var lineHeight = target.css("line-height");
 
     // Si on click sur plus petit, on rédécrémente la taille.
     $(".agrandirtexte_moin").on("click", function () {
         size--;
-        $("#CONFIG{agrandirtexte/selecteur}").css({
+        target.css({
             "font-size": size+"px",
             "line-height": "normal"
         });
@@ -24,7 +26,7 @@ jQuery(document).ready(function($) {
         size = save_size;
 
         // On revient à save_size
-        $("#CONFIG{agrandirtexte/selecteur}").css({
+        target.css({
             "font-size": save_size+"px",
             "line-height": lineHeight
         });
@@ -33,9 +35,11 @@ jQuery(document).ready(function($) {
     // Si on demander le texte plus grand, on incrémente la taille;
     $(".agrandirtexte_plus").on("click", function () {
         size++;
-        $("#CONFIG{agrandirtexte/selecteur}").css({
+        target.find('p').css({
             "font-size": size+"px",
             "line-height": "normal"
         });
+
+        console.log(size);
     });
 });
