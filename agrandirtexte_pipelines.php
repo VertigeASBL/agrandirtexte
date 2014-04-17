@@ -10,7 +10,7 @@
  */
 
 if (!defined('_ECRIRE_INC_VERSION')) return;
-	
+
 
 /*
  * Un fichier de pipelines permet de regrouper
@@ -19,7 +19,9 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
  */
 
 function agrandirtexte_insert_head($flux) {
-    $flux .= '<script src="'.produire_fond_statique('js/agrandir.js').'" type="text/javascript"></script>';
+    $flux .= '
+    <script src="'.produire_fond_statique('js/agrandir.js').'" type="text/javascript"></script>
+    <script src="'.produire_fond_statique('js/lancer_agrandir.js').'" type="text/javascript"></script>';
 
     return $flux;
 }
