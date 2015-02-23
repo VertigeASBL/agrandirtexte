@@ -32,5 +32,3 @@ function agrandirtexte_insert_head_css($flux) {
 
     return $flux;
 }
-
-?>
